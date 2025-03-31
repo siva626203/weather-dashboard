@@ -1,12 +1,26 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+const blogs = [
+  {
+    id: "1",
+    author: "Mark",
+    content: "blog 1 content is here",
+  },
 
-type ResponseData = {
-  message: string;
-};
+  {
+    id: "2",
+    author: "Mohamed",
+    content: "blog 2 content is here",
+  },
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ResponseData>
-) {
-  res.status(200).json({ message: "Hello from Next.js!" });
+  {
+    id: "3",
+    author: "Amine",
+    content: "blog 3 content is here",
+  },
+];
+
+export async function GET(req: Request) {
+  return new Response(JSON.stringify(blogs), {
+    status: 200,
+    headers: { "Content-Type": "application/json" },
+  });
 }
